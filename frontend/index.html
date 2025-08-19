@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Cloud Storage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Personal Cloud</h1>
+
+        <!-- Sign Up / Sign In Section -->
+        <div id="auth-section">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="signUp()">Sign Up</button>
+            <button onclick="signIn()">Sign In</button>
+        </div>
+
+        <!-- Logout Button -->
+        <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
+
+        <!-- Upload Section -->
+        <div id="upload-section" style="display:none;">
+            <h3>Upload File</h3>
+            <input type="file" id="fileInput">
+            <button onclick="uploadFile()">Upload</button>
+        </div>
+
+        <!-- Files Section -->
+        <div id="files-section" style="display:none;">
+            <h3>Your Files</h3>
+            <ul id="fileList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
