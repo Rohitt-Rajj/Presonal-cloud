@@ -1,81 +1,128 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+:root{
+  --bg1: #0b1220;
+  --fg: #eaf0ff;
+  --muted: #a9b6d3;
+  --glass: rgba(255,255,255,0.12);
+  --glass-border: rgba(255,255,255,0.18);
+  --primary: #5b8cff;
+  --primary-2: #7aa6ff;
+  --ok: #31d0aa;
+  --err: #ff6b6b;
 }
 
-.container {
-    background: rgba(255, 255, 255, 0.7); /* more transparent */
-    padding: 25px 35px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    width: 350px;
-    text-align: center;
-    backdrop-filter: blur(6px); /* glassmorphism effect */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--fg);
+  background: linear-gradient(180deg, rgba(10,18,32,0.8), rgba(10,18,32,0.95)),
+              url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed;
+}
+
+.page {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
 }
 
 h1 {
-    margin-bottom: 20px;
-    color: #222;
-    font-weight: 600;
-    font-size: 1.8em;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0.3px;
 }
 
-input {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 0.95em;
-    outline: none;
-    transition: border 0.3s ease;
+.tagline {
+  margin: 0 0 18px 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
-input:focus {
-    border-color: #007BFF;
+.section { margin-top: 18px; }
+
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 8px 0;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.08);
+  color: var(--fg);
+  outline: none;
 }
 
-button {
-    margin: 5px;
-    padding: 10px 20px;
-    border: none;
-    background: #007BFF;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: 500;
-    transition: background 0.3s ease;
+input::placeholder { color: #d7def5aa; }
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-button:hover {
-    background: #0056b3;
+.space-between { justify-content: space-between; }
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.06);
+  color: var(--fg);
+  cursor: pointer;
+  transition: transform .05s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover { background: rgba(255,255,255,0.12); }
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
 }
 
-#files-section ul {
-    list-style: none;
-    padding: 0;
+.status {
+  min-height: 22px;
+  margin-bottom: 6px;
+  font-size: 13px;
 }
+.status.ok { color: var(--ok); }
+.status.err { color: var(--err); }
 
-#files-section li {
-    margin: 5px 0;
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: grid;
+  gap: 8px;
 }
-
-#files-section a {
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: 500;
+.file-list li {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--glass-border);
+  padding: 10px 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
-#files-section a:hover {
-    text-decoration: underline;
+.file-list a {
+  color: #cfe0ff;
+  text-decoration: none;
 }
+.file-list a:hover { text-decoration: underline; }

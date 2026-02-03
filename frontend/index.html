@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Personal Cloud Storage</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Personal Cloud Storage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="page">
+    <div class="card">
+      <h1>Personal Cloud</h1>
+      <p class="tagline">Upload, store, and access your files securely.</p>
 
-    <div class="container">
-        <h1>Personal Cloud</h1>
+      <div id="status" class="status" aria-live="polite"></div>
 
-        <!-- Sign Up / Sign In Section -->
-        <div id="auth-section">
-            <input type="email" id="email" placeholder="Email">
-            <input type="password" id="password" placeholder="Password">
-            <button onclick="signUp()">Sign Up</button>
-            <button onclick="signIn()">Sign In</button>
+      <!-- Auth -->
+      <div id="auth-section" class="section">
+        <input type="email" id="email" placeholder="Email" autocomplete="email" />
+        <input type="password" id="password" placeholder="Password (min 6 chars)" autocomplete="current-password" />
+        <div class="row">
+          <button class="btn" onclick="signUp()">Sign Up</button>
+          <button class="btn btn-primary" onclick="signIn()">Sign In</button>
         </div>
+      </div>
 
-        <!-- Logout Button -->
-        <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
+      <!-- User / Logout -->
+      <div id="userbar" class="row space-between" style="display:none;">
+        <span id="user-label"></span>
+        <button id="logout-btn" class="btn" onclick="logout()">Logout</button>
+      </div>
 
-        <!-- Upload Section -->
-        <div id="upload-section" style="display:none;">
-            <h3>Upload File</h3>
-            <input type="file" id="fileInput">
-            <button onclick="uploadFile()">Upload</button>
+      <!-- Upload -->
+      <div id="upload-section" class="section" style="display:none;">
+        <h3>Upload File</h3>
+        <input type="file" id="fileInput" />
+        <button class="btn btn-primary" onclick="uploadFile()">Upload</button>
+      </div>
+
+      <!-- Files -->
+      <div id="files-section" class="section" style="display:none;">
+        <div class="row space-between">
+          <h3>Your Files</h3>
+          <button class="btn" onclick="loadFiles()">Refresh</button>
         </div>
-
-        <!-- Files Section -->
-        <div id="files-section" style="display:none;">
-            <h3>Your Files</h3>
-            <ul id="fileList"></ul>
-        </div>
+        <ul id="fileList" class="file-list"></ul>
+      </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
